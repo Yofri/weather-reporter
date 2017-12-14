@@ -13,7 +13,6 @@ class Login {
       if (response.error) {
         res.status(400).json(response.error);
       } else {
-        // console.log(response);
         var token = jwt.sign({
           id: response.id,
           name: response.name,
