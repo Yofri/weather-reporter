@@ -10,6 +10,9 @@ module.exports = router
       const forecast = await darksky.options({
         latitude: req.body.latitude,
         longitude: req.body.longitude,
+        time: new Date(),
+        language: id,
+        exclude: ['flags', 'hourly']
       }).get()
       res.status(200).send(forecast)
     } catch (err) {
