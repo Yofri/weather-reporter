@@ -39,7 +39,7 @@ let createWeather = async (req, res) => {
 
                 Weather.findOne({
                     location: response.json.results[6].address_components[1].long_name,
-                    date : 15
+                    date: new Date().getDay()
                 })
                 .then((getLocation) => {
                     if (!getLocation){
@@ -48,7 +48,7 @@ let createWeather = async (req, res) => {
                             latitude: req.body.latitude,
                             longitude: req.body.longitude,
                             location: response.json.results[6].address_components[1].long_name,
-                            date: 15,
+                            date: new Date().getDay(),
                             summary: forecast.daily.data[0].summary,
                             icon: forecast.daily.data[0].icon
 

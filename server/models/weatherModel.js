@@ -10,7 +10,7 @@ const weatherSchema = new Schema({
     latitude : String,
     longitude : String,
     location : String,
-    date: String,
+    date: Number,
     summary : String,
     icon : String
 });
