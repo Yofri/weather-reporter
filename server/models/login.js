@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
 
 class Login {
   static login(req, res, next) {
-    req.headers = req.body
+    // console.log(req.body)
+    // req.headers = req.body
+    // console.log(req.headers)
     let fb = new FB.Facebook({
       accessToken: req.body.accessToken,
       appId: process.env.FBAPPID,

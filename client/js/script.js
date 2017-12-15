@@ -11,6 +11,7 @@ function showPosition(position) {
     latitude: position.coords.latitude,
     longitude: position.coords.longitude
   }).then(response => {
+    console.log(response)
     const app = document.getElementById('app')
     const createNode = element => document.createElement(element)
     const appendElement = (parent, elm) => parent.appendChild(elm)
