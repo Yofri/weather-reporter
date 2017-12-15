@@ -1,0 +1,21 @@
+body {
+  font-family: 'Roboto' }
+.mdl-button--fab {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900; }
+.mdl-navigation span {
+  margin-right: 12px; }
+.welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: grey; }
+.mdl-layout-title span {
+  font-size: 32px; }
