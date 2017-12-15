@@ -4,7 +4,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+require('dotenv').config()
 const cors = require('cors');
+
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://triamri:123456@ds137826.mlab.com:37826/weather');
@@ -14,6 +16,7 @@ const users = require('./routes/users');
 const weather = require('./routes/weather');
 
 const app = express();
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
