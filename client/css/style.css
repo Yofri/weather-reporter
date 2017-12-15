@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto' }
+
 .mdl-button--fab {
   position: fixed;
   display: block;
@@ -26,3 +27,7 @@ body {
   transform: translate(-50%, -50%); }
 .mdl-layout-title span {
   font-size: 32px; }
+
+#logout-btn {
+  width: 100px;
+  margin: 0 auto; }

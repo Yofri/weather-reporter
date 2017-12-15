@@ -4,13 +4,20 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+require('dotenv').config()
+const cors = require('cors');
+
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://triamri:123456@ds137826.mlab.com:37826/weather');
 
 // const index = require('./routes/index');
-// const users = require('./routes/users');
-const weather = require('./routes/weather')
+const users = require('./routes/users');
+const weather = require('./routes/weather');
 
 const app = express();
+const loginRoute = require('./routes/loginRoute');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -20,10 +27,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 // app.use('/', index);
-// app.use('/users', users);
+app.use('/users', users);
 app.use('/weather', weather)
+app.use('/api/login', loginRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -17,3 +17,7 @@ function showPosition(position) {
     console.log(error);
   });
 }
+
+/* if (localStorage.getItem('token') ) {
+  document.getElementById('getWeather').removeAttribute('disabled')
+} */
