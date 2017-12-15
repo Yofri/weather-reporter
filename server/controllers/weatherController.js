@@ -2,6 +2,11 @@ const Weather = require('../models/weatherModel');
 require('dotenv').config();
 const DarkSky = require('dark-sky');
 const darksky = new DarkSky(process.env.DARKSKY_KEY);
+const Mail    = require('../mail-sender')
+
+const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyD02q9joYeCyu3NdGWI-EW9FHq5qaMl0dM'
+});
 
 const ObjectID = require('mongodb').ObjectID;
 
@@ -17,38 +22,84 @@ let getWeather = (req, res) => {
 }
 
 let createWeather = async (req, res) => {
+
+    const forecast = await darksky.options({
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        time: new Date(),
+        language: 'id',
+        exclude: ['flags', 'hourly']
+    }).get()
+
     try {
-        const forecast = await darksky.options({
-            latitude: req.body.latitude,
-            longitude: req.body.longitude,
-            time: new Date(),
-            language: 'id',
-            exclude: ['flags', 'hourly']
-        }).get()
+        googleMapsClient.geocode({
+            address: `${req.body.latitude} , ${req.body.longitude}`
+        }, function (err, response) {
+            if (!err) {
+                // res.status(200).json(response.json.results[6].address_components[1].long_name);
 
-        //send email
+                Weather.findOne({
+                    location: response.json.results[6].address_components[1].long_name,
+                    date: new Date().getDay()
+                })
+                .then((getLocation) => {
+                    if (!getLocation){
+                        const newWeather = new Weather({
+                            userID: req.body.userID,
+                            latitude: req.body.latitude,
+                            longitude: req.body.longitude,
+                            location: response.json.results[6].address_components[1].long_name,
+                            date: new Date().getDay(),
+                            summary: forecast.daily.data[0].summary,
+                            icon: forecast.daily.data[0].icon
+                        });
 
-        const newWeather = new Weather({
-            latitude: req.body.latitude,
-            longitude: req.body.longitude,
-            date : Date.now(),
-            summary: forecast.daily.data[0].summary,
-            icon: forecast.daily.data[0].icon
+                        const weather = {
+                            latitude: req.body.latitude,
+                            longitude: req.body.longitude,
+                            location: response.json.results[6].address_components[1].long_name,
+                            date: new Date().getDay(),
+                            summary: forecast.daily.data[0].summary,
+                            icon: forecast.daily.data[0].icon
+                        };
 
-        });
-        newWeather.save()
-        .then(result => {
-            res.status(200).send(forecast)
-        })
-        .catch(error => {
-            res.status(500).json(error);
+                        console.log(req.headers)
+
+                        let mail = new Mail('yofriadiyahya@gmail.com', newWeather)
+                        mail.send()
+                        newWeather.save()
+                            .then(result => {
+                                res.status(200).json(newWeather)
+                            })
+                            .catch(error => {
+                                res.status(500).json(error);
+                            });
+                    }else{
+                        res.status(200).send(getLocation)
+                    }
+
+                })
+                .catch((err) => {
+                    res.status(500).json(err);
+                })
+            }
         });
     } catch (err) {
         next(err)
     }
 }
 
+// let location = async (req, res) => {
+//     googleMapsClient.geocode({
+//         address: `${req.body.latitude} , ${req.body.longitude}`
+//     }, function (err, response) {
+//         if (!err) {
+//             res.status(200).json(response.json.results[6].address_components[1].long_name);
+//         }
+//     });
+// }
+
 module.exports = {
     getWeather,
-    createWeather  
+    createWeather
 }

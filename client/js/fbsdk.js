@@ -15,7 +15,6 @@ function testAPI() {
     if (response.authResponse) {
       FB.api('/me?fields=email, name',
         function (res) {
-          // console.log(res);
           axios.post('http://localhost:3000/api/login', {
             accessToken: response.authResponse.accessToken,
             userId: response.authResponse.userID,
