@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Weather</title>
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container" id="login-form">
+  	  <div class="row">
+        <form class="form-signin mg-btm">
+          <h3 class="heading-desc">
+      		Login to The App
+          </h3>
+      		<div class="social-box">
+      			<div class="row mg-btm">
+              <div class="col-md-12">
+                <div class="fb-login-button" id="login-btn" data-max-rows="1" data-size="large"
+                  data-button-type="login_with" data-show-faces="false"
+                  data-auto-logout-link="false" data-use-continue-as="false"
+                  scope="public_profile,email" onlogin="checkLoginState();">
+                </div>
+                  <div id="logout-btn">
+                    <a href="#" class="btn btn-primary btn-block">
+                    <i class="icon-facebook"></i>  Log Out
+                    </a>
+			            </div>
+              </div>
+      			 </div>
+      		 </div>
+        </form>
+  	  </div>
+    </div>
 
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/fbsdk.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

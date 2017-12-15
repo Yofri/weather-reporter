@@ -7,8 +7,6 @@
 }())
 
 function showPosition(position) {
-  // console.log(position.coords.latitude)
-  // console.log(position.coords.longitude)
   axios.post('http://localhost:3000/weather', {
     latitude: position.coords.latitude,
     longitude: position.coords.longitude
