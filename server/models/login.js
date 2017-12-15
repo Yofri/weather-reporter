@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken');
 const FB = require('fb');
+const mongoose = require('mongoose')
 
 class Login {
   static login(req, res, next) {
-    console.log(req.body);
+    req.headers = req.body
     let fb = new FB.Facebook({
       accessToken: req.body.accessToken,
       appId: process.env.FBAPPID,

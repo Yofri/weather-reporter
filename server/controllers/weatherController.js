@@ -51,11 +51,20 @@ let createWeather = async (req, res) => {
                             date: new Date().getDay(),
                             summary: forecast.daily.data[0].summary,
                             icon: forecast.daily.data[0].icon
-
                         });
+
+                        const weather = {
+                            latitude: req.body.latitude,
+                            longitude: req.body.longitude,
+                            location: response.json.results[6].address_components[1].long_name,
+                            date: new Date().getDay(),
+                            summary: forecast.daily.data[0].summary,
+                            icon: forecast.daily.data[0].icon
+                        };
+
                         newWeather.save()
                             .then(result => {
-                                res.status(200).send(forecast)
+                                res.status(200).send(weather)
                             })
                             .catch(error => {
                                 res.status(500).json(error);

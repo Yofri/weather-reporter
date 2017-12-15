@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 const cors = require('cors');
 
-
 const googleMapsClient = require('@google/maps').createClient({
   key: 'AIzaSyD02q9joYeCyu3NdGWI-EW9FHq5qaMl0dM'
 });
@@ -20,7 +19,7 @@ const users = require('./routes/users');
 const weather = require('./routes/weather');
 
 const app = express();
-const loginRoute = require('./routes/loginRoute');
+const loginRoute = require('./routes/login-route');
 
 
 // uncomment after placing your favicon in /public
