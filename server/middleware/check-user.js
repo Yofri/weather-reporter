@@ -1,17 +1,17 @@
 const User = require('../models/userModel');
 
 let checkCreate = (req, res, next) => {
-    User.findOne({ idfacebook: req.body.idfacebook })
+    User.findOne({ idfacebook: req.body.userId })
     .then((result)=>{
         if (result){
             next();
-        }else{
+        } else {
             const newUser = new User({
-                idfacebook: req.body.idfacebook,
+                idfacebook: req.body.userId,
                 name: req.body.name,
                 email: req.body.email
             })
-            
+
             newUser.save()
             .then((result)=>{
                 next();

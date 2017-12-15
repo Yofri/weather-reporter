@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const middle = require('../middleware/chekUser'); 
+const middle = require('../middleware/check-user');
 
 
 /* GET users listing. */

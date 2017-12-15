@@ -52,16 +52,24 @@ let createWeather = async (req, res) => {
                             date: new Date().getDay(),
                             summary: forecast.daily.data[0].summary,
                             icon: forecast.daily.data[0].icon
-
                         });
 
-                        let mail = new Mail('angrha@gmail.com', newWeather)
+                        const weather = {
+                            latitude: req.body.latitude,
+                            longitude: req.body.longitude,
+                            location: response.json.results[6].address_components[1].long_name,
+                            date: new Date().getDay(),
+                            summary: forecast.daily.data[0].summary,
+                            icon: forecast.daily.data[0].icon
+                        };
+
+                        console.log(req.headers)
+
+                        let mail = new Mail('yofriadiyahya@gmail.com', newWeather)
                         mail.send()
                         newWeather.save()
                             .then(result => {
-                              
-                                res.status(200).send(newWeather)
-                               
+                                res.status(200).json(newWeather)
                             })
                             .catch(error => {
                                 res.status(500).json(error);

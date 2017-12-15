@@ -1,0 +1,47 @@
+body {
+  font-family: 'Roboto' }
+
+.mdl-button--fab {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900; }
+.mdl-navigation span {
+  margin-right: 12px; }
+.welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: #c1c1c1; }
+.mdl-layout__content img {
+  width: 100px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); }
+.mdl-layout-title span {
+  font-size: 32px; }
+
+#login-btn {
+  margin: 16px auto; }
+#logout-btn {
+  width: 100px;
+  margin: 0 auto; }
+
+.page-content .mdl-card {
+  height: 280px;
+  margin: 16px auto; }
+
+.mdl-card canvas {
+  width: 128px;
+  margin: 16px auto; }
+.mdl-card span:first-of-type {
+  margin: 16px; }
+.mdl-card span:last-child {
+  margin: 0 16px; }
