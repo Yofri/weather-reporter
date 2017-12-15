@@ -1,10 +1,10 @@
-(function getLocation() {
+$('#getWeather').click(() => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition)
   } else {
     console.log('Geolocation is not supported by this browser.')
   }
-}())
+})
 
 function showPosition(position) {
   axios.post('http://localhost:3000/weather', {
@@ -17,7 +17,3 @@ function showPosition(position) {
     console.log(error);
   });
 }
-
-/* if (localStorage.getItem('token') ) {
-  document.getElementById('getWeather').removeAttribute('disabled')
-} */

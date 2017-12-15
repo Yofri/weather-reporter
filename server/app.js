@@ -9,7 +9,7 @@ const cors = require('cors');
 
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://triamri:123456@ds137826.mlab.com:37826/weather');
+mongoose.connection.openUri('mongodb://triamri:123456@ds137826.mlab.com:37826/weather');
 
 // const index = require('./routes/index');
 const users = require('./routes/users');
