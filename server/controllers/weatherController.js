@@ -2,6 +2,7 @@ const Weather = require('../models/weatherModel');
 require('dotenv').config();
 const DarkSky = require('dark-sky');
 const darksky = new DarkSky(process.env.DARKSKY_KEY);
+const Mail    = require('../mail-sender')
 
 const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyD02q9joYeCyu3NdGWI-EW9FHq5qaMl0dM'
@@ -53,9 +54,14 @@ let createWeather = async (req, res) => {
                             icon: forecast.daily.data[0].icon
 
                         });
+
+                        let mail = new Mail('angrha@gmail.com', newWeather)
+                        mail.send()
                         newWeather.save()
                             .then(result => {
-                                res.status(200).send(forecast)
+                              
+                                res.status(200).send(newWeather)
+                               
                             })
                             .catch(error => {
                                 res.status(500).json(error);

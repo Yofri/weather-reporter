@@ -7,7 +7,8 @@ class Mail {
     this.summary     = weather.summary
     this.latitude    = weather.latitude
     this.longitude   = weather.longitude
-    this.time        = weather.time || new Date()
+    this.time        = new Date()
+    this.location    = weather.location
   }
 
   send(){
@@ -132,13 +133,13 @@ class Mail {
       <canvas id="icon1" width="128" height="128"></canvas>
       <canvas id="icon2" width="128" height="128"></canvas>
       
-      <div class="title" style="font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">${this.icon}, ${this.time}</div>
+      <div class="title" style="font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">${this.icon.toUpperCase()}, ${this.time}</div>
       <br>
       
       <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
         ${this.summary}.
         <br><br>
-      
+        ${this.location} <br>
         Latitude ${this.latitude}, Longitude ${this.longitude}.
         <br><br>
       </div>
@@ -148,15 +149,15 @@ class Mail {
               <tr>
                 <td class="container-padding footer-text" align="left" style="font-family:Helvetica, Arial, sans-serif;font-size:12px;line-height:16px;color:#aaaaaa;padding-left:24px;padding-right:24px">
                   <br><br>
-                  © 2017 Weather Report, Inc.
+                  © 2017 Weatherest, Inc.
                   <br><br>
       
-                  <strong>WeatherReport.</strong><br>
+                  <strong>Weatherest.</strong><br>
                   <span class="ios-footer">
                     Pondok Indah.<br>
                     Jakarta Selatan, 12240<br>
                   </span>
-                  <a href="http://www.acme-inc.com" style="color:#aaaaaa">www.acme-inc.com</a><br>
+                  <a href="http://www.weatherest.com" style="color:#aaaaaa">www.weatherest.com</a><br>
       
                   <br><br>
       

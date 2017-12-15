@@ -19,6 +19,7 @@
     "mailsender": "^1.1.2",
     "mongoose": "^4.13.7",
     "morgan": "~1.9.0",
+    "nodemailer": "^4.4.1",
     "serve-favicon": "~2.4.5"
   }
 }
