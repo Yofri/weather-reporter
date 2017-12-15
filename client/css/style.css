@@ -28,6 +28,20 @@ body {
 .mdl-layout-title span {
   font-size: 32px; }
 
+#login-btn {
+  margin: 16px auto; }
 #logout-btn {
   width: 100px;
   margin: 0 auto; }
+
+.page-content .mdl-card {
+  height: 280px;
+  margin: 16px auto; }
+
+.mdl-card canvas {
+  width: 128px;
+  margin: 16px auto; }
+.mdl-card span:first-of-type {
+  margin: 16px; }
+.mdl-card span:last-child {
+  margin: 0 16px; }
